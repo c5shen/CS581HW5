@@ -6,14 +6,19 @@ def convertToUnalign(f):
     out = open(path + '/rose.unaln.true.fasta', 'w')
 
     data = open(f, 'r').read().split('\n')[:-1]
+    combined = []
     for line in data:
         if line == '':
-            out.write('\n')
+            #out.write('\n')
             continue
         if line[0] == '>':
+            if len(combined) > 0:
+                out.write(''.join(combined) + '\n')
+                combined.clear()
             out.write(line + '\n')
         else:
-            out.write(re.sub(r'[-]*', '', line) + '\n')
+            combined.append(re.sub(r'[-]*', '', line))
+            #out.write(re.sub(r'[-]*', '', line) + '\n')
     out.close()
 
 # To conversion true alignment files back to unaligned fasta files
@@ -30,5 +35,24 @@ def main():
             print("Processing {}".format(f))
             convertToUnalign(f)
 
+    # also parse for 16S.M
+    f = pre + '16S.M/R0/cleaned.alignment.fasta'
+    data = open(f, 'r').read().split('\n')[:-1]
+    out = open(pre + '16S.M/R0/cleaned.unaln.fasta', 'w')
+    print("Processing {}".format(f))
+    combined = []
+    for line in data:
+        if line == '':
+            #out.write('\n')
+            continue
+        if line[0] == '>':
+            if len(combined) > 0:
+                out.write(''.join(combined) + '\n')
+                combined.clear()
+            out.write(line + '\n')
+        else:
+            combined.append(re.sub(r'[-]*', '', line))
+            #out.write(re.sub(r'[-]*', '', line) + '\n')
+    out.close()
 if __name__ == "__main__":
     main()
