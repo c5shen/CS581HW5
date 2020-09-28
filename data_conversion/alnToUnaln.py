@@ -19,6 +19,8 @@ def convertToUnalign(f):
         else:
             combined.append(re.sub(r'[-]*', '', line))
             #out.write(re.sub(r'[-]*', '', line) + '\n')
+    if len(combined) > 0:
+        out.write(''.join(combined) + '\n')
     out.close()
 
 # To conversion true alignment files back to unaligned fasta files
@@ -53,6 +55,8 @@ def main():
         else:
             combined.append(re.sub(r'[-]*', '', line))
             #out.write(re.sub(r'[-]*', '', line) + '\n')
+    if len(combined) > 0:
+        out.write(''.join(combined) + '\n')
     out.close()
 if __name__ == "__main__":
     main()
