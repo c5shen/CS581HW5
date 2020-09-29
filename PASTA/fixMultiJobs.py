@@ -12,8 +12,8 @@ def main():
     for f in files:
         if f.find('pastajob1') != -1:
             ind = f.find('pastajob1') + len('pastajob1')
-            print(path+'pastajob'+f[ind:])
-            #os.rename(path+f, path+'pathjob'+f[8:])
+            #print(path+'pastajob'+f[ind:])
+            os.rename(path+f, path+'pastajob'+f[ind:])
 
     #for i in range(0, reps):
     #    path = 
