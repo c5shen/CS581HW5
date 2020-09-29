@@ -1,0 +1,28 @@
+PASTA INFO: Directory for temporary files created at /home/chengzes/.pasta/pastajob/tempmqm88xuq
+PASTA INFO: Name translation information saved to /home/chengzes/Desktop/Classes/CS581/hw5/CS581HW5/PASTA/1000M1/R9/pastajob_temp_name_translation.txt as safe name, original name, blank line format.
+PASTA INFO: Creating a starting tree for the PASTA algorithm...
+PASTA INFO: Performing initial alignment of the entire data matrix...
+PASTA INFO: Performing initial tree search to get starting tree...
+PASTA INFO: Starting PASTA algorithm on initial tree...
+PASTA INFO: Max subproblem set to 200
+PASTA INFO: Step 0. Realigning with decomposition strategy set to mincluster
+PASTA INFO: Step 0. Alignment obtained. Tree inference beginning...
+PASTA INFO: realignment accepted and score improved.
+PASTA INFO: current score: -1130532.807, best score: -1130532.807
+PASTA INFO: TreeShrink option has been turned off!
+PASTA INFO: Step 1. Realigning with decomposition strategy set to mincluster
+PASTA INFO: Step 1. Alignment obtained. Tree inference beginning...
+PASTA INFO: realignment accepted and score improved.
+PASTA INFO: current score: -979466.512, best score: -979466.512
+PASTA INFO: TreeShrink option has been turned off!
+PASTA INFO: Step 2. Realigning with decomposition strategy set to mincluster
+PASTA INFO: Step 2. Alignment obtained. Tree inference beginning...
+PASTA INFO: realignment accepted and score improved.
+PASTA INFO: current score: -977695.983, best score: -977695.983
+PASTA INFO: TreeShrink option has been turned off!
+PASTA INFO: Writing resulting alignment to 1000M1/R9/pastajob.marker001.rose.unaln.true.aln
+PASTA INFO: Writing resulting tree to 1000M1/R9/pastajob.tre
+PASTA INFO: Writing resulting likelihood score to 1000M1/R9/pastajob.score.txt
+PASTA INFO: The resulting alignment (with the names in a "safe" form) was first written as the file "/home/chengzes/Desktop/Classes/CS581/hw5/CS581HW5/PASTA/1000M1/R9/pastajob_temp_iteration_2_seq_alignment.txt"
+PASTA INFO: The resulting tree (with the names in a "safe" form) was first written as the file "/home/chengzes/Desktop/Classes/CS581/hw5/CS581HW5/PASTA/1000M1/R9/pastajob_temp_iteration_2_tree.tre"
+PASTA INFO: Total time spent: 1716.2045359611511s
