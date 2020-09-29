@@ -15,8 +15,14 @@ def main():
             #print(path+'pastajob'+f[ind:])
             os.rename(path+f, path+'pastajob'+f[ind:])
 
-    #for i in range(0, reps):
-    #    path = 
+    for d in datasets:
+        for i in range(0, reps):
+            path = '{}/R{}/'.format(d,i)
+            files = os.listdir(path)
+            for f in files:
+                if f.find('pastajob1') != -1:
+                    ind = f.find('pastajob1') + len('pastajob1')
+                    os.rename(path+f, path+'pastajob'+f[ind:])
 
 if __name__ == "__main__":
     main()
