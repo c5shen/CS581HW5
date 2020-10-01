@@ -8,7 +8,7 @@ import dendropy
 tns = dendropy.TaxonNamespace()
 binary = '../../FastTree/FastTreeMP'
 
-# compare two trees and return the FP and FN (t1 is reference)
+# compare two trees and return the FP and FN (t2 is reference)
 def compareTrees(t1, t2):
     return treecompare.false_positives_and_negatives(t1, t2)
 
@@ -25,7 +25,7 @@ def evaluation(gt_tree, true_aln_tree, est_aln_tree, pasta_tree):
     else:
         tree2 = Tree.get_from_path(true_aln_tree, "newick", taxon_namespace=tns)
         tree2.encode_bipartitions()
-        true_aln_fpfn = compareTrees(gt_tree_in, tree2)
+        true_aln_fpfn = compareTrees(tree2, gt_tree_in)
 
     # 2.2 Estimated Alignment inferred tree
     if (not os.path.isfile(est_aln_tree) or
@@ -34,13 +34,13 @@ def evaluation(gt_tree, true_aln_tree, est_aln_tree, pasta_tree):
     else:
         tree2 = Tree.get_from_path(est_aln_tree, "newick", taxon_namespace=tns)
         tree2.encode_bipartitions()
-        est_aln_fpfn = compareTrees(gt_tree_in, tree2)
+        est_aln_fpfn = compareTrees(tree2, gt_tree_in)
 
     # 2.3 Maybe put in PASTA generated tree too
     tree3 = Tree.get_from_path(pasta_tree,
                 "newick", taxon_namespace=tns)
     tree3.encode_bipartitions()
-    pasta_tre_fpfn = compareTrees(gt_tree_in, tree3)
+    pasta_tre_fpfn = compareTrees(tree3, gt_tree_in)
 
     return true_aln_fpfn, est_aln_fpfn, pasta_tre_fpfn
 

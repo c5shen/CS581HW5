@@ -8,7 +8,7 @@ import dendropy
 tns = dendropy.TaxonNamespace()
 binary = '../../FastTree/FastTreeMP'
 
-# compare two trees and return the FP and FN (t1 is reference)
+# compare two trees and return the FP and FN (t2 is reference)
 def compareTrees(t1, t2):
     return treecompare.false_positives_and_negatives(t1, t2)
 
@@ -25,7 +25,7 @@ def evaluation(gt_tree, true_aln_tree, est_aln_tree):
     else:
         tree2 = Tree.get_from_path(true_aln_tree, "newick", taxon_namespace=tns)
         tree2.encode_bipartitions()
-        true_aln_fpfn = compareTrees(gt_tree_in, tree2)
+        true_aln_fpfn = compareTrees(tree2, gt_tree_in)
 
     # 2.2 Estimated Alignment inferred tree
     if (not os.path.isfile(est_aln_tree) or
@@ -34,7 +34,7 @@ def evaluation(gt_tree, true_aln_tree, est_aln_tree):
     else:
         tree2 = Tree.get_from_path(est_aln_tree, "newick", taxon_namespace=tns)
         tree2.encode_bipartitions()
-        est_aln_fpfn = compareTrees(gt_tree_in, tree2)
+        est_aln_fpfn = compareTrees(tree2, gt_tree_in)
 
     return true_aln_fpfn, est_aln_fpfn
 
@@ -43,21 +43,21 @@ def main():
     result_file.write('Dataset,Repetition,True Aln FP,True Aln FN,Est Aln FP,Est Aln FN,PASTA FN,PASTA FP\n')
 
     #16S.M
-    true_aln = '../../16S.M/R0/cleaned.alignment.phylip'
-    est_aln = '16S.M/mafft.aln.phylip'
-    true_aln_tree = '16S.M/true_aln_tree.nwk'
-    est_aln_tree = '16S.M/est_aln_tree.nwk'
-    gt_tree = '../../16S.M/16S.M.reference.nwk'
-    print("running FastTree on 16S.M on R0, method GTR")
-    command = binary + ' -nt -gamma -gtr '
-    os.system(command + true_aln + ' > ' + true_aln_tree)
-    os.system(command + est_aln + ' > ' + est_aln_tree)
-    true_aln_fpfn, est_aln_fpfn = evaluation(
-            gt_tree, true_aln_tree, est_aln_tree)
-    result_file.write('16S.M'+',R0,'+
-                    ','.join([str(x) for x in true_aln_fpfn])+
-                    ','+','.join([str(x) for x in est_aln_fpfn])+
-                    '\n')
+    #true_aln = '../../16S.M/R0/cleaned.alignment.phylip'
+    #est_aln = '16S.M/mafft.aln.phylip'
+    #true_aln_tree = '16S.M/true_aln_tree.nwk'
+    #est_aln_tree = '16S.M/est_aln_tree.nwk'
+    #gt_tree = '../../16S.M/16S.M.reference.nwk'
+    #print("running FastTree on 16S.M on R0, method GTR")
+    #command = binary + ' -nt -gamma -gtr '
+    #os.system(command + true_aln + ' > ' + true_aln_tree)
+    #os.system(command + est_aln + ' > ' + est_aln_tree)
+    #true_aln_fpfn, est_aln_fpfn = evaluation(
+    #        gt_tree, true_aln_tree, est_aln_tree)
+    #result_file.write('16S.M'+',R0,'+
+    #                ','.join([str(x) for x in true_aln_fpfn])+
+    #                ','+','.join([str(x) for x in est_aln_fpfn])+
+    #                '\n')
 
     #1000M1 and 1000M4
     targets = ['1000M1', '1000M4']
