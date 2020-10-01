@@ -60,7 +60,7 @@ def main():
     #                '\n')
 
     #1000M1 and 1000M4
-    targets = ['1000M1', '1000M4']
+    targets = ['1000M4']
     for target in targets:
         for i in range(10):
             # input file info
