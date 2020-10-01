@@ -52,7 +52,7 @@ def main():
     command = binary + ' -nt -gamma -gtr '
     os.system(command + true_aln + ' > ' + true_aln_tree)
     os.system(command + est_aln + ' > ' + est_aln_tree)
-    true_aln_fpfn, est_aln_fpfn, pasta_tre_fpfn = evaluation(
+    true_aln_fpfn, est_aln_fpfn = evaluation(
             gt_tree, true_aln_tree, est_aln_tree)
     result_file.write('16S.M'+',R0,'+
                     ','.join([str(x) for x in true_aln_fpfn])+
@@ -90,7 +90,7 @@ def main():
             os.system(command + est_aln + ' > ' + est_aln_tree)
 
             # 2. evaluate tree correctness
-            true_aln_fpfn, est_aln_fpfn, pasta_tre_fpfn = evaluation(
+            true_aln_fpfn, est_aln_fpfn = evaluation(
                     gt_tree, true_aln_tree, est_aln_tree)
 
             # 3. Write to result file
