@@ -49,23 +49,23 @@ def main():
     result_file.write('Dataset,Repetition,True Aln FP,True Aln FN,Est Aln FP,Est Aln FN,PASTA FN,PASTA FP\n')
 
     #16S.M
-    #true_aln = '../../16S.M/R0/cleaned.alignment.phylip'
-    #est_aln = '16S.M/pastajob.marker001.cleaned.unaln.phylip'
-    #true_aln_tree = '16S.M/true_aln_tree.nwk'
-    #est_aln_tree = '16S.M/est_aln_tree.nwk'
-    #gt_tree = '../../16S.M/16S.M.reference.nwk'
-    #pasta_tree = '16S.M/pastajob.tre'
-    #print("running FastTree on 16S.M on R0, method GTR")
-    #command = binary + ' -nt -gamma -gtr '
-    #os.system(command + true_aln + ' > ' + true_aln_tree)
-    #os.system(command + est_aln + ' > ' + est_aln_tree)
-    #true_aln_fpfn, est_aln_fpfn, pasta_tre_fpfn = evaluation(
-    #        gt_tree, true_aln_tree, est_aln_tree, pasta_tree)
-    #result_file.write('16S.M'+',R0,'+
-    #                ','.join([str(x) for x in true_aln_fpfn])+
-    #                ','+','.join([str(x) for x in est_aln_fpfn])+
-    #                ','+','.join([str(x) for x in pasta_tre_fpfn])+
-    #                '\n')
+    true_aln = '../../16S.M/R0/cleaned.alignment.phylip'
+    est_aln = '16S.M/pastajob.marker001.cleaned.unaln.aln'
+    true_aln_tree = '16S.M/true_aln_tree.nwk'
+    est_aln_tree = '16S.M/est_aln_tree.nwk'
+    gt_tree = '../../16S.M/16S.M.reference.nwk'
+    pasta_tree = '16S.M/pastajob.tre'
+    print("running FastTree on 16S.M on R0, method GTR")
+    command = binary + ' -nt -gamma -gtr '
+    os.system(command + true_aln + ' > ' + true_aln_tree)
+    os.system(command + est_aln + ' > ' + est_aln_tree)
+    true_aln_fpfn, est_aln_fpfn, pasta_tre_fpfn = evaluation(
+            gt_tree, true_aln_tree, est_aln_tree, pasta_tree)
+    result_file.write('16S.M'+',R0,'+
+                    ','.join([str(x) for x in true_aln_fpfn])+
+                    ','+','.join([str(x) for x in est_aln_fpfn])+
+                    ','+','.join([str(x) for x in pasta_tre_fpfn])+
+                    '\n')
 
     #1000M1 and 1000M4
     targets = ['1000M1', '1000M4']
